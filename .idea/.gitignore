@@ -1,0 +1,11 @@
+# Folders
+/modules/
+
+# Files
+compiler.xml
+gradle.xml
+jarRepositories.xml
+misc.xml
+uiDesigner.xml
+vcs.xml
+workspace.xml
