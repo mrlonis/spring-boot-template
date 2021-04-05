@@ -1,0 +1,22 @@
+# Folders
+/.gradle/
+/.idea/**
+!/.idea/codeStyles/
+!/.idea/codeStyles/codeStyleConfig.xml
+!/.idea/codeStyles/Project.xml
+!/.idea/runConfigurations/
+!/.idea/runConfigurations/spring_boot_template__bootRun_.xml.xml
+!/.idea/runConfigurations/spring_boot_template__build_.xml.xml
+/.settings/
+/.vscode/
+/bin/
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+/node_modules/
+/out/
+
+# Files
+.DS_Store
+.classpath
+.project
+.settings

@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "c24051ed-6ba6-480d-a11f-baf67220e674",
+		"name": "SpringBootTemplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetControllerExample",
+			"item": [
+				{
+					"name": "Get Request Example",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is OK\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"    \r",
+									"    var contentType = postman.getResponseHeader(\"Content-Type\");\r",
+									"    pm.expect(contentType).to.be.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response Body statusCode is 200 & messages is 200 OK\", function () {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.statusCode).to.eql(200);\r",
+									"    pm.expect(responseJson.message).to.eql(\"200 OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/v1/getTemplate/getMethodExample?statusCode=200",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getTemplate",
+								"getMethodExample"
+							],
+							"query": [
+								{
+									"key": "statusCode",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actuator",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/actuator/health",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clear Environment Variables",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.unset(\"accessToken\");",
+							"pm.environment.unset(\"ExpiresInTime\");",
+							"pm.environment.unset(\"OAuth_Timestamp\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}",
+					"host": [
+						"{{hostname}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
