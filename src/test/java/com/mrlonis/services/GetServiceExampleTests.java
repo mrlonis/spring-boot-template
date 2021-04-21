@@ -10,9 +10,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 
 @ExtendWith(MockitoExtension.class)
-public class GetServiceTemplateTests {
+public class GetServiceExampleTests {
     @InjectMocks
-    GetServiceTemplate getServiceTemplate;
+    GetServiceExample getServiceExample;
 
     @Test
     public void shouldReturn200_whenProvided200StatusCode() {
@@ -23,7 +23,7 @@ public class GetServiceTemplateTests {
                                                                     .message(HttpStatus.OK.toString())
                                                                     .build();
 
-        GetMethodExampleResponse actual = getServiceTemplate.getMethodExampleResponse(statusCode);
+        GetMethodExampleResponse actual = getServiceExample.getMethodExampleResponse(statusCode);
 
         assertEquals(expected, actual);
     }

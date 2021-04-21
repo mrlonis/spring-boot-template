@@ -1,7 +1,7 @@
 package com.mrlonis.controllers;
 
 import com.mrlonis.dto.GetMethodExampleResponse;
-import com.mrlonis.services.GetServiceTemplate;
+import com.mrlonis.services.GetServiceExample;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/getTemplate")
 @Api(tags = {"Get Template"})
-public class GetControllerTemplate {
+public class GetControllerExample {
 
-    private final GetServiceTemplate getServiceTemplate;
+    private final GetServiceExample getServiceExample;
 
     @Autowired
-    public GetControllerTemplate(GetServiceTemplate getServiceTemplate) {
-        this.getServiceTemplate = getServiceTemplate;
+    public GetControllerExample(GetServiceExample getServiceExample) {
+        this.getServiceExample = getServiceExample;
     }
 
     @ResponseBody
     @GetMapping(path = "/getMethodExample", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(httpMethod = "GET", value = "Example GET Method", response = GetMethodExampleResponse.class)
     public GetMethodExampleResponse getMethodExample(@RequestParam(name = "statusCode") int statusCode) {
-        return getServiceTemplate.getMethodExampleResponse(statusCode);
+        return getServiceExample.getMethodExampleResponse(statusCode);
     }
 
 }

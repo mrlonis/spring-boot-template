@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import com.mrlonis.dto.GetMethodExampleResponse;
-import com.mrlonis.services.GetServiceTemplate;
+import com.mrlonis.services.GetServiceExample;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,12 +13,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 
 @ExtendWith(MockitoExtension.class)
-public class GetControllerTemplateTests {
+public class GetControllerExampleTests {
     @InjectMocks
-    GetControllerTemplate getControllerTemplate;
+    GetControllerExample getControllerExample;
 
     @Mock
-    GetServiceTemplate getServiceTemplate;
+    GetServiceExample getServiceExample;
 
     @Test
     public void shouldReturn200_whenProvided200StatusCode() {
@@ -29,9 +29,9 @@ public class GetControllerTemplateTests {
                                                                     .message(HttpStatus.OK.toString())
                                                                     .build();
 
-        when(getServiceTemplate.getMethodExampleResponse(statusCode)).thenReturn(expected);
+        when(getServiceExample.getMethodExampleResponse(statusCode)).thenReturn(expected);
 
-        GetMethodExampleResponse actual = getControllerTemplate.getMethodExample(statusCode);
+        GetMethodExampleResponse actual = getControllerExample.getMethodExample(statusCode);
 
         assertEquals(expected, actual);
     }

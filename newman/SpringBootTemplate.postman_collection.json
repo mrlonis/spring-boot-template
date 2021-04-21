@@ -62,6 +62,64 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Post Request Example",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response is OK\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"    \r",
+									"    var contentType = postman.getResponseHeader(\"Content-Type\");\r",
+									"    pm.expect(contentType).to.be.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response Body statusCode is 200 & messages is 200 OK\", function () {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.statusCode).to.eql(200);\r",
+									"    pm.expect(responseJson.message).to.eql(\"200 OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"statusCode\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/v1/postTemplate/postMethodExample",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"postTemplate",
+								"postMethodExample"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
